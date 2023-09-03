@@ -1,0 +1,66 @@
+
+<button id="myButton">จัดการประเภททุน</button>
+<div id="myPopup" class="popup">
+    <div class="popup-content">
+        <div style="padding-top: 10px;">
+            <h2>ประเภททุนทั้งหมด</h2>
+        </div>
+        <div class="bordcontent">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ประเภททุน</th>
+                        <th style="width: 100px;">ลบ</th>
+                        <th style="width: 100px;">แก้ไข</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.values(listtype).forEach(function(item){%>
+                        <tr>
+                            <form action="/scholarships/typedelete" method="POST">
+                                <td>
+                                    <%= item%>
+                                </td>
+                                <td>
+                                    <button class="deletebtnpopup" type="submit" value="<%= item%>" name="nametype"
+                                        onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</button>
+                                </td>
+                            </form>
+                            <form action="">
+                                <td>
+                                    <button class="editbtnpopup" type="submit" value="<%= item%>" name="nametype"
+                                        onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">แก้ไข</button>
+                                </td>
+                            </form>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <form action="/scholarships/addcomptype" method="POST">
+            <h4>เพิ่มประเภททุน</h4>
+            <div style="padding-bottom: 15px;">
+                <input placeholder="  เพิ่มประเภททุนใหม่ที่นี่" class="textinline" type="text" name="scholarship_type"
+                    id="" autocomplete="off">
+            </div>
+            <button class="btnpopup" type="submit">เพิ่ม</button>
+        </form>
+        <div style="padding-top: 8px;">
+            <button class="blackbtnpopup" id="closePopup">ย้อนกลับ</button>
+        </div>
+    </div>
+</div>
+<script>
+    myButton.addEventListener("click", function () {
+        myPopup.classList.add("show");
+    });
+    closePopup.addEventListener("click", function () {
+        myPopup.classList.remove("show");
+    });
+    window.addEventListener("click", function (event) {
+        if (event.target == myPopup) {
+            myPopup.classList.remove("show");
+        }
+    });
+</script>
+<%- include('../endsidebarmain')%>

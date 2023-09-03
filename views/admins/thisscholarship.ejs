@@ -1,0 +1,105 @@
+<%- include('../sidebarmainadmin')%>
+    <h1 class="maintext" style="padding-top: 25px; text-align: center;">
+        <%= scholarships.sname%>
+    </h1>
+    <div style="display:flex; justify-content: center; margin-top: 20px;">
+        <div class="Sarea">
+            <div class="c de" style=" padding-top: 30px;">
+                <label for="">
+                    <h2 style="text-decoration: underline;">รายละเอียดทุน</h2>
+                </label>
+                <div class="scholardetail detail">
+                    <label for="">
+                        <h4>มหาวิทยาลัย</h4>
+                        <%= scholarships.university%>
+                    </label>
+                    <label for="">
+                        <h4>ประเทศ</h4>
+                        <%= scholarships.country%>
+                    </label>
+                    <label for="">
+                        <h4>คณะ</h4>
+                        <%= scholarships.sfaculty%>
+                    </label>
+                    <label for="">
+                        <h4>สาขา</h4>
+                        <%= scholarships.sbranch%>
+                    </label>
+
+                    <label for="">
+                        <h4>ระดับการศึกษา</h4>
+                        <%= scholarships.sclass%>
+                    </label>
+                </div>
+                <label for="">
+                    <h2 style="text-decoration: underline;">รูปแบบทุน</h2>
+                </label>
+                <div class="scholardetail information">
+                    <label for="" style="padding-top: 15px;">
+                        <h4>ประเภททุน</h4>
+                        <%= scholarships.stype%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h4>ค่าครองชีพ</h4>
+                        <%= scholarships.costoflive%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h4>ค่าศึกษา</h4>
+                        <%= scholarships.costoflean%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h4>ค่าที่พักอาศัย</h4>
+                        <%= scholarships.costofabode%>
+                    </label>
+                </div>
+                <label for="">
+                    <h2 style="text-decoration: underline;">คุณสมบัติ</h2>
+                </label>
+                <div class="scholardetail property">
+                    <label for="" style="padding-top: 15px;">
+                        <h4>เกรดที่รับ</h4>
+                        <%= scholarships.sgpa%>
+                    </label>
+
+                    <label for="" style="padding-top: 15px;">
+                        <h4>คะแนน TOEIC</h4>
+                        <%= scholarships.stoeic%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h4>คะแนน IELTS</h4>
+                        <%= scholarships.sielts%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h4>คะแนน TOEFL</h4>
+                        <%= scholarships.stoefl%>
+                    </label>
+                </div>
+                <div class="scholardetail other">
+                    <label for="" style="padding-top: 15px;">
+                        <h3>เปิดรับ</h3>
+                        <%= scholarships.opendate%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h3>ปิดรับ</h3>
+                        <%= scholarships.closedate%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h3>ผู้ให้ทุน</h3>
+                        <%= scholarships.sgiver%>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h3>URL</h3><a href="<%= scholarships.url%>">เยี่ยมชมหน้าเว็ปไซต์</a>
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h3>ปักหมุดแล้ว</h3>
+                        <%= scholarships.pinnedcount%> ครั้ง
+                    </label>
+                    <label for="" style="padding-top: 15px;">
+                        <h3>วันที่เพิ่มข้อมูล</h3>
+                        <%= scholarships.scrapdate%>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../endsidebarmain')%>

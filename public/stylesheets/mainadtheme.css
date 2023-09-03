@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+/* .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    justify-content: space-between;
+} */
+
+*{  
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    /* --primary-color:#c693fc;
+    --panel-color:#ffffff;
+    --text-color:#000000;
+    --black-light-color:#525252;
+    --border-color:#cacaca;
+    --toggle-color:#000000;*/
+    --box1-color:#a859d8;
+    --box2-color:#D65DB1;
+    --box3-color:#FF6F91;
+    --box4-color:#FF9671;
+    --box5-color:#FFC75F;
+    /* --box6-color:#F9F871;
+    --title-icon-color:#fff;  */
+
+    /* transition */
+    --tran-05: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+    --tran-02: all 0.2s ease;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--primary-color);
+}
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: rgb(255, 255, 255);
+    border-right: 1px solid var(--border-color);
+}
+
+nav .logo-name{
+    display: flex;
+    align-items: center;
+}
+
+nav .logo-name .logo_name{
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 14px;
+}
+
+nav .logo-image{
+    display: flex;
+    justify-content: center;
+    min-width: 45px;
+}
+
+nav .logo-image img{
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+nav .menu-items{
+    margin-top: 40px;
+    height: calc(100% - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-items li{
+    list-style-type: none;
+}
+
+.menu-items li a{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-links li a:hover::before{
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    list-style-type: none;
+}
+
+.menu-items li a i{
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: var(--black-light-color); */
+}
+
+.menu-items li a span{
+    font-size: 18px;
+    font-weight: 400;
+    /* color: var(--black-light-color); */
+}
+
+.btn{
+    color: #000000;
+}
+
+.btn.add{
+    border: 2px solid limegreen;
+    background-color: #fff;
+}
+.btn.del{
+    border: 2px solid red;
+    background-color: #fff;
+}
+.btn.edit{
+    border: 2px solid orange;
+    background-color: #fff;
+}
+
+.btn.add:hover{
+    transition: 0.5s;
+    border: 2px solid transparent;
+    background-color: limegreen;
+    color: #fff;
+}
+.btn.del:hover{
+    transition: 0.5s;
+    border: 2px solid transparent;
+    background-color: red;
+    color: #fff;
+}
+.btn.edit:hover{
+    transition: 0.5s;
+    border: 2px solid transparent;
+    background-color: orange;
+    color: #fff;
+}
+
+.nav-links li a:hover i,
+.nav-links li a:hover span{
+    color: #c34bff;
+}
+
+.logout-mode li a:hover i,
+.logout-mode li a:hover span{
+    color: red;
+}
+
+.menu-items .logout-mode{
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.menu-items .mode{
+    display: flex;
+    align-items: center;
+}
+
+.menu-items .mode-toggle{
+    position: absolute;
+    right: 14px;
+    height: 50px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dashboard{
+    position: relative;
+    left: 250px;
+    background-color: #f5f5fa;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 0px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dashboard .top{
+    position: fixed;
+    top: 0;
+    display: flex;
+    left: 250px;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+}
+
+.dashboard .top .sidebar-toggle{
+    font-size: 26px;
+    color: var(--text-color);
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.dashboard .top .search-box{
+    position: fixed;
+    height: 50px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0px 4%;
+    padding-top: 10px;
+}
+
+.dashboard .top .search-box i{
+    padding-top: 25px;
+}
+
+.top .search-box input{
+    position: absolute;
+    border: 1px solid;
+    background-color: var(--panel-color);
+    padding: 0px 25px 0px 50px;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+}
+
+.top .search-box i{
+    position: absolute;
+    font-size: 22px;
+    left: 15px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--black-light-color);
+}
+
+.dashboard .dash-content{
+    padding-top: 5px;
+}
+
+.dash-content .title{
+    display: flex;
+    align-items: center;
+    margin: 60px 0 30px 0;
+}
+
+.dash-content .title i{
+    position: relative;
+    height: 35px;
+    width: 35px;
+    background-color: #5e1eff;
+    border-radius: 6px;
+    color: var(--title-icon-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.dash-content .title .text{
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.bordcontent{
+    width: auto;
+    height: 400px;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    overflow: scroll; 
+}
+
+.btnpopup{
+    border: 0px solid #888888;
+    width: 300px;
+    height: 50px;
+    background-color: limegreen;
+}
+
+.editbtnpopup{
+    border: 0px solid #888888;
+    width: 60px;
+    height: 40px;
+    background-color: orange;
+}
+
+.deletebtnpopup{
+    border: 0px solid #888888;
+    width: 60px;
+    height: 40px;
+    background-color: red;
+}
+
+.blackbtnpopup{
+    border: 0px solid #888888;
+    width: 300px;
+    height: 50px;
+    background-color: grey;
+}
+
+.popup-content {
+    text-align: center;
+    background-color: white;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #888888;
+    width: 800px;
+    height: 720px;
+    font-weight: bolder;
+}
+
+.textinline{
+    width: 300px;
+    height: 40px;
+}
+
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+.show {
+    display: block;
+}
+h1 {
+    color: green;
+}
+
+.searchbtn{
+    text-align: center;
+    margin-left: 2px;
+    margin-top: 0px;
+    position: relative;
+    width: 90px;
+    height: 40px;
+    background: rgb(0, 102, 255);
+    border: 0px solid #888888;
+}
+
+.reloardbtn{
+    width: 90px;
+    height: 40px;
+    border: 0px solid #888888;
+    position: absolute;
+} 
+  /* Style the active class (and buttons on mouse-over) */
+  .active{
+    color: #c34bff;
+    list-style-type: none;
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #e0dcdc8d;
+    padding-left: 35px;
+  }
+  
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------------- test --------------------------------------------------------------- */
+
+.info-boxes {
+    
+    padding: 3em 0 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 2em;
+
+    .info-box {
+        color: #000;
+        background: #ffffff;
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 3em;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        box-shadow: 2px 3px 4px #aaaa;
+        
+        .box-icon {
+            background-color: transparent;
+            .uil{
+            background-color:transparent;	
+            }
+        }
+        
+        .box-content {
+            background-color: transparent;	
+            padding-left: 1.25em;
+            white-space: nowrap;
+            
+            .big {
+                background-color: transparent;
+                display: block;
+                font-size: 2em;
+                line-height: 150%;
+            }
+        }
+    
+    }
+
+
+}
+
+
+.box1:hover  {
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    background-color:var(--box1-color);
+    color: #fff;
+}
+.box2:hover{
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    background-color:var(--box2-color);
+    color: #fff;
+}
+.box3:hover{
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    background-color:var(--box3-color);
+    color: #fff;
+}
+.box4:hover{
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    background-color:var(--box4-color);
+    color: #fff;
+}
+.box5:hover{
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    background-color: var(--box5-color);
+    color: #fff;
+} 
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------ dcholarships detail ------------------------------------------------------------ */
+
+.scholardetail.detail{
+    row-gap: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.scholardetail.information{
+    row-gap: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.scholardetail.property{
+    row-gap: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.scholardetail.other{
+    row-gap: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.scholardetail.other label h3{
+    text-decoration:  underline;
+}
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ----------------------------------------------------------detail profile--------------------------------------------------------------- */
+.areapro{
+    padding: 3em 0 2em;
+    display: grid;
+    grid-template-columns: 350px auto;
+    column-gap: 2em;
+}
+
+.pro{
+    margin-left: 21px;
+    color: #000;
+    background: #ffffff;
+    height: 550px;
+    padding: 2rem 3em;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 2px 3px 4px #aaaa;
+        
+}
+
+.depro{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-left: 21px;
+    color: #000;
+    background: #ffffff;
+    height: 550px;
+    padding: 2rem 3em;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 2px 3px 4px #aaaa;
+        
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------ dcholarships detail ------------------------------------------------------------ */
+
+.scholardetail.detail{
+    padding-bottom: 30px;
+    width: 780px;
+    border-bottom: 2px solid #aaaaaaaa;
+    row-gap: 5px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 400px 400px;
+}
+
+.scholardetail.information{
+    padding-bottom: 30px;
+    width:780px;
+    border-bottom: 2px solid #aaaaaaaa;
+    row-gap: 5px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 400px 400px;
+}
+
+.scholardetail.property{
+    padding-bottom: 30px;
+    width: 780px;
+    border-bottom: 2px solid #aaaaaaaa;
+    row-gap: 5px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 400px 400px;
+
+}
+.scholardetail.other{
+    padding-bottom: 30px;
+    width: 780px;
+    border-bottom: 2px solid #aaaaaaaa;
+    row-gap: 5px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 400px 400px;
+
+}
+.scholardetail.other label h3{
+    text-decoration:  underline;
+}
+.Sarea{display: flex;
+    background: #ffffff;
+    width: 900px;
+    height: 100%;
+    padding: 2rem 3em;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 2px 3px 4px #aaaa;
+}
+
+/*---------------------------------------------------- addadmin popup ------------------------------------------------------------------------------*/
+.form-popup {
+    display: none;
+    position: fixed;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+   
+  .form-container {
+    width: 350px;
+    padding: 15px;
+    background-color: white;
+  }
+  
+  .form-container input[type=text]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .form-container .ipct{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  .form-container .btn {
+    border: 2px solid limegreen;
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+
+  .form-container .btn:hover {
+    background-color: limegreen;
+    color: #fff;
+    
+  }
+  
+  .form-container .cancel {
+    border: 2px solid red;
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    width: 100%;
+  }
+  .form-container .cancel:hover {
+    background-color: red;
+  }
+
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+/*  */

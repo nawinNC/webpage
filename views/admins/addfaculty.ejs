@@ -1,0 +1,95 @@
+<%- include('../sidebarmainadmin')%>
+
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/popupitem.css">
+    <h1 style="text-align: center;">จัดการคณะ</h1>
+    <h5 id="rowsc"></h5>
+    <button class="fixebtn" id="myButton">เพิ่มคณะใหม่</button>
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <form action="/scholarships/addcompfaculty" method="POST">
+                <h4 style="padding-bottom: 20px;">เพิ่มคณะ</h4>
+                <div style="padding-bottom: 30px;">
+                    <input placeholder="  เพิ่มคณะใหม่ที่นี่" class="textinline" type="text" name="faculty" id="" autocomplete="off" required>
+                </div>
+                <button class="btnpopup" type="submit">เพิ่ม</button>
+            </form>
+            <div style="padding-top: 8px;">
+                <button class="blackbtnpopup" id="closePopup">ย้อนกลับ</button>
+            </div>
+        </div>
+    </div>
+    <!-- แก้ใข -->
+
+    <div class="bordcontent" style="margin-top: 10px;">
+        <table id="table" class="table table-hover table-sm table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">คณะ</th>
+                    <th style="width: 110px;" scope="col">ลบ</th>
+                    <th style="width: 110px;" scope="col">แก้ไข</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.values(majordocs).forEach(function(item){%>
+                    <tr>
+                        <form action="/scholarships/facultydelete" method="POST">
+                            <td id="stype">
+                                <%= item.faculty%>
+                            </td>
+                            <td>
+                                <button class="deletebtnpopup" type="submit" value="<%= item.faculty%>" name="facultyname" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</button>
+                            </td>
+                        </form>
+                        <td>
+                            <input hidden value="<%= item._id%>" id="sendfacultyid" type="text">
+                            <button value="<%= item.faculty%>" class="editbtnpopup" onclick="openForm(this.value)">แก้ไข</button>
+                            <div id="myForm" class="popup">
+                                <div class="popup-content">
+                                    <h4 style="padding-bottom: 20px;">แก้ใขประเภททุน</h4>
+                                    <form action="/scholarships/editfaculty" method="post">
+                                        <input hidden name="paramss" id="facultyeditid" type="text">
+                                        <input id="showedit" class="textinline" type="text" name="facultyedit" autocomplete="off">
+                                        <button class="btnpopup" type="submit">แก้ใข</button>
+                                    </form>
+                                    <div style="padding-top: 8px;">
+                                        <button class="blackbtnpopup" onclick="closeForm(this.value)">ย้อนกลับ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script>
+        myButton.addEventListener("click", function() {
+            myPopup.classList.add("show");
+        });
+        closePopup.addEventListener("click", function() {
+            myPopup.classList.remove("show");
+        });
+        window.addEventListener("click", function(event) {
+            if (event.target == addtype) {
+                myPopup.classList.remove("show");
+            }
+        });
+
+
+        function openForm(sfacukty) {
+            document.getElementById("myForm").style.display = "block";
+            let inline = document.getElementById("showedit");
+            inline.value = sfacukty;
+            let params = document.getElementById("facultyeditid");
+            params.value = sfacukty;
+        }
+
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+<%- include('../endsidebarmain')%>

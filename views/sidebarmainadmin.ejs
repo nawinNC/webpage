@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/mainadtheme.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/images/ci.jpg" alt="">
+            </div>
+            <span class="logo_name">Main Admin</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links" id="myDIV">
+                <li><a href="/scholarships/Maindashboard" class="btn active">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name" >DashBoard</span>
+                </a></li>
+
+                <li><a href="/scholarships/list" class="btn">
+                    <i class="uil uil-book-alt"></i>
+                    <span class="link-name">รายการทุนการศึกษา</span>
+                </a></li>
+
+                <li><a href="/scholarships/userlist" class="btn">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">รายการผู้ใช้</span>
+                </a></li>
+
+                <li><a href="/scholarships/adminlist" class="btn">
+                    <i class="uil uil-users-alt"></i>
+                    <span class="link-name">รายการผู้ดูแล</span>
+                </a></li>
+
+                <li><a class="btn dropdown-btn" style="cursor: pointer;">
+                    <i class="uil uil-list-ul"></i>
+                    <span class="link-name">การแก้ไข </span></a>
+                        <div class="dropdown-container">
+                            <a href="/scholarships/mngfaculty" style="color: black;">
+                                <i class="uil uil-user-arrows"></i>
+                                <span class="link-name">แก้ไขคณะ</span>
+                            </a>
+                            <a href="/scholarships/mngtype" style="color: black;">
+                                <i class="uil uil-clipboard-notes"></i>
+                                <span class="link-name">แก้ไขประเภททุน</span>
+                            </a>
+                            <a href="/scholarships/mngbranch" style="color: black;">
+                                <i class="uil uil-code-branch"></i>
+                                <span class="link-name">แก้ไขสาขา</span></a>
+                        </div>
+                </li>
+                </ul>
+    
+                <ul class="logout-mode">
+                    <li><a href="/scholarships/logout" class="btn">
+                        <i class="uil uil-sign-out-alt"></i>
+                        <span class="link-name" id="demo" onclick="alertFunction()">Logout</span>
+                    </a></li>
+                </ul>
+            </div>
+        </nav>
+    <section class="dashboard">
+       
+    

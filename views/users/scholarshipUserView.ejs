@@ -1,0 +1,58 @@
+<%- include('../navthementop')%>
+    <section>
+        <div class="ariagrid">
+            <div class="reccommandtext" style="text-align: -webkit-center; margin-top: 40px;">
+                <label for="" class="font-reccommand">รายการทุนการศึกษา</label>
+            </div>
+            
+                    <div class="sculsaria"> 
+                        <div class="scollist">
+                            <div class="box-scholarshipin">
+                            <% Object.values(scholarships).forEach(function(item){%>
+                                <div class="sculslist">
+                                    <div class="areasculslist">
+                                        <form action="/users/pinin" method="POST">
+                                            <input type="hidden" value="page1" name="whatpage">
+                                            <input type="hidden" name="pin_id" value="<%= item._id%>">
+                                            <button type="submit" class="pinbtn">ปักหมุด</button>
+                                        </form>
+                                        <div class="box-top">
+                                            <label for="" class="font-name">
+                                                <%= item.sname%>
+                                            </label>
+                                        </div>
+                                        <div class="box-botton">
+                                            <div class="limittext">
+                                                <label for="" class="font-chile">
+                                                    <%= item.sfaculty%>
+                                                </label>
+                                            </div>
+
+                                            <label for="" class="font-chile">
+                                                <%= item.sclass%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                จำนวนการปักหมุด : <%= item.pinnedcount%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                จำนวนผู้เข้าชม : <%= item.watchcount%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                เปิดรับ : <%= item.opendate%>
+                                            </label>
+                                            <label for="" class="font-chile">
+                                                ปิดรับ : <%= item.closedate%>
+                                            </label>
+                                            <a class="detail" href="/users/this/<%= item._id%>">ดูรายละเอียด</a>
+                                        </div>
+                                    </div><br>
+                                </div>
+                                <% }) %>
+
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+    <%- include('../navthemeend')%>

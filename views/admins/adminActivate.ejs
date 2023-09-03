@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+        <link rel="stylesheet" href="D:\helloscrap\public\stylesheets\style.css" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <style>
+            .div1 {
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 50px;
+                width: 500px;
+                height: 425px;
+                backdrop-filter: blur(10px);
+                background-color: #9335c67b;
+                border-radius: 15px;
+            }
+            .buttonst {
+                width: 80px;
+                height: 35px;
+                border-radius: 15px;
+                border: 1px solid #e69100;
+                background-color: #ffa502;
+            }
+        </style>
+</head>
+<body style="background-color: aliceblue;">
+    <h1 style="text-align: center; padding-top: 50px;">Admin Activate</h1>
+    <div style="text-align: center;">
+        <div class="div1" >
+            <form action="/scholarships/activateAccount" method="POST">
+                <h4 style="padding-top: 30px;">Admin name</h4>
+                <input type="hidden" name="admin_id" value="<%= subadmindata._id%>" >
+                <input type="text" name="admin_name" autocomplete="off" value="<%= subadmindata.aname%>" readonly style="margin-top: 10px;">
+                <h4 style="padding-top: 30px;">Change admin password</h4>
+                <input type="text" name="onepassword" autocomplete="off" required style="margin-top: 10px;">
+                <h4 style="padding-top: 30px;">Enter password again</h4>
+                <input type="text" name="twopassword" autocomplete="off" required style="margin-top: 10px;"><br><br><br>
+                <button class="buttonst" type="submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

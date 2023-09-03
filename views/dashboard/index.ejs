@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style> 
+      div.container {
+        width: 100%;
+        border: 0px solid black;
+        background-color: gainsboro;
+      }
+      
+      div.box {
+        box-sizing: border-box;
+        width: 50%;
+        border: 5px solid red;
+        float: left;
+      }
+    </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Admin Dashboard</h1>
+  <div class="container">
+    <h5  style="text-align: center;">รายการทุนการศึกษา</h5>
+    <div>
+      <h6>จำนวนทุนการศึกษาทั้งหมด <%= scholarshipsAmount%> รายการทุน <a href="/scholarships/list"> จัดการทุนการศึกษา</a></h6>
+      <h6>ครอบคลุม  <%= facultyAmount%> คณะ  <%= branchAmonut%> สาขา <a href="/scholarships/addcomp">จัดการตัวเลือก</a></h6>
+      <h6>ทุนคณะที่ได้รับความสนใจมากที่สุด อันดับที่1 * อันดับที่2 * อันดับที่3 * </h6>
+      <h6>รวมการปักหมุดทั้งหมด * ครั้ง</h6>
+    </div>
+  </div>
+  <div>
+    <li><a href="http://localhost:3000/scholarships/list">รายการทุนทั้งหมด</a></li>
+    <li><a href="http://localhost:3000/scholarships/insertdata">เพิ่มทุน</a></li>
+    <li><a href="http://localhost:3000/scholarships/userlist">รายการผู้ใช้</a></li>
+    <li><a href="http://localhost:3000/scholarships/addcomp">จัดการตัวเลือก</a></li>
+  </div>
+  <div>
+    <h1>User system test</h1>
+    <li><a href="http://localhost:3000/users/page">login</a></li>
+  </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<%- include('../navthementop')%>
+    <div class="ariagrid">
+        <div style="text-align: -webkit-center;">
+            <div class="reccommandtext" style="margin-top: 40px;">
+                <label for="" class="font-reccommand">RECCOMEND FOR YOU</label>
+            </div>
+        </div>
+            <section style="position: sticky; top: 0; text-align: -webkit-center; z-index: 1;">
+                <div class="search-box">
+                    <input type="search" name="" id="" placeholder="search..."><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button class="box2"> 
+                            <a href="#divOne" class="button3 fa fa-filter"  aria-hidden="true" ></a>
+                        </button>
+                </div>
+            </section>
+        
+        <div class="mainbody">
+            <div class="profile">
+                    <label for="" class="profile-font"
+                        style="font-size: 40px; font-weight: 600; color: #000;">Profile</label><br>
+                    <div class="grid-container" style="color: #000; font-weight: 300;">
+                        <b><label for="" class="profile-font">Name : <%= userdata.ufname%>
+                            </label></b>
+                        <b><label for="" class="profile-font">Faculty : <%= userdata.ufaculty%>
+                            </label></b>
+                        <b><label for="" class="profile-font">Branch : <%= userdata.ubranch%>
+                            </label></b>
+                        <b><label for="" class="profile-font">Degree : <%= userdata.uclass%>
+                            </label></b>
+                        <b><label for="" class="profile-font">GPA : <%= userdata.ugpa%></label></b>
+                    </div>
+                    <div class="box2"> 
+                        <a href="#divOne" class="button2">Edit</a>
+                    </div>
+
+                    
+            </div>
+            <div class="scholararea">
+                <div class="box-scholarship">
+                    <div class="sculsaria">
+                        <div class="scollist">
+                            <div class="box-scholarshiprec">
+                                <% Object.values(rec).forEach(function(item){%>
+                                    <div class="sculslist">
+                                        <div class="areasculslist">
+                                            <form action="/users/pinin" method="POST">
+                                                <input type="hidden" value="page1" name="whatpage">
+                                                <input type="hidden" name="pin_id" value="<%= item._id%>">
+                                                <button type="submit" class="pinbtn">ปักหมุด</button>
+                                            </form>
+                                            <div class="box-top">
+                                                <% if (item.sname !==null && item.sname !=="" ) { %>
+                                                    <label for="" class="font-name">
+                                                        <%= item.sname%>
+                                                    </label>
+                                                    <% } %>
+                                            </div>
+                                            <div class="box-botton">
+                                                <% if (item.stype !==null && item.stype !=="" ) { %>
+                                                    <label for="" class="font-chile">
+                                                        <%= item.stype%>
+                                                    </label>
+                                                    <% } %>
+
+                                                <% if (item.sclass!==null && item.sclass !=="" ) { %>
+                                                    <label for="" class="font-chile">
+                                                        <%= item.sclass%>
+                                                    </label>
+                                                <% } %>
+
+
+                                                <% if (item.sfaculty !==null && item.sfaculty !=="" ) { %>
+                                                    <label for="" class="font-chile">
+                                                        <%= item.sfaculty%>
+                                                    </label>
+                                                <% } %>
+
+                                                <% if (item.sbranch!==null && item.sbranch !=="" ) { %>
+                                                    <label for="" class="font-chile">
+                                                        <%= item.sbranch%>
+                                                    </label>
+                                                <% } %>
+
+                                                <% if (item.university !==null && item.university !=="" ) { %>
+                                                    <label for="" class="font-chile">
+                                                        <%= item.university %>
+                                                    </label>
+                                                <% } %>
+
+                                                <% if (item.pinnedcount !==null && item.pinnedcount !=="" ) { %>
+                                                    <label for=""class="font-chile">จำนวนการปักหมุด :
+                                                        <%= item.pinnedcount%>
+                                                    </label>
+                                                <% } %>
+
+                                                <% if (item.closedate !==null && item.closedate !=="" ) { %>
+                                                    <label for=""class="font-chile">
+                                                        <%= item.closedate%>
+                                                    </label>
+                                                <% } %>
+
+                                                <a href="/users/this/<%= item._id%>" class="detail">ดูรายละเอียด</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay2" id="divOne">
+                    <div class="wrapper2">
+                        <h3 style="text-align: center;"> ข้อมูลผู้ใช้ </h3>
+                        <form class="form-userupdate" method="POST" action="/users/userupdate">
+                        <input type="hidden" value="<%= userdata._id%>" name="update_id">
+                        <a href="#" class="close">&times;</a>
+                        <label for="" class="profile-font">E-mail : <input type="text" name="uemail" value="<%= userdata.uemail%>" readonly></label>
+                        <label for="" class="profile-font">Name : <input type="text" name="ufname" value="<%= userdata.ufname%>"></label>
+                        <label for="" class="profile-font">Faculty : <input type="text" name="ufaculty" value="<%= userdata.ufaculty%>"></label>
+                        <label for="" class="profile-font">Branch : <input type="text" name="ubranch" value="<%= userdata.ubranch%>"></label>
+                        <label for="" class="profile-font">Degree : <input type="text" name="uclass" value="<%= userdata.uclass%>"></label>
+                        <label for="" class="profile-font">GPA : <input type="text" name="ugpa" value="<%= userdata.ugpa%>"></label>
+                        <label for="" class="profile-font">PHONE : <input type="text" name="phonenumber" value="<%= userdata.phonenumber%>"></label>
+                        <label for="" class="profile-font">Type : <input type="text" name="ustype" value="<%= userdata.ustype%>"></label>
+                        <label for="" class="profile-font">IELTS : <input type="text" name="uielts" value="<%= userdata.uielts%>"></label>
+                        <label for="" class="profile-font">OEFL : <input type="text" name="utoefl" value="<%= userdata.utoefl%>"></label>
+                        <label for="" class="profile-font">TOEIC : <input type="text" name="utoeic" value="<%= userdata.utoeic%>"></label>
+
+                        <button>
+                            <input type="submit" value="แก้ไขข้อมูล" class="btn-userupdate">
+                        </button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    myButton.addEventListener("click", function () {
+        myPopup.classList.add("show");
+    });
+    closePopup.addEventListener("click", function () {
+        myPopup.classList.remove("show");
+    });
+    window.addEventListener("click", function (event) {
+        if (event.target == myPopup) {
+            myPopup.classList.remove("show");
+        }
+    });
+</script>
+    <%- include('../navthemeend')%>

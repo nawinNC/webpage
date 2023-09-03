@@ -1,0 +1,184 @@
+<%- include('../sidebarmainadmin')%>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <h1 style="padding-top: 25px; text-align: center;">เพิ่มทุน</h1>
+    <div class="container" style="margin-left: 32%;">
+        <div class="row my-3">
+            <div class="col-md-8 mb-4">
+                <form class="form-horizontal" method="POST" action="/scholarships/insert">
+                    <div class="form-group">
+                        <label class="control-label">ชื่อทุน</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="sname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">ประเภททุน</label>
+                        <div class="col-sm-10">
+                            <select name="stype" id="stype" multiple>
+                                <% for (i=0;i< scholarshipstype.length;i++) {%>
+                                    <option value="<%= scholarshipstype[i]%>">
+                                        <%= scholarshipstype[i]%>
+                                    </option>
+                                    <%} %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">วันที่เปิดรับ</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="opendate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">วันที่ปิดรับ</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="closedate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ระดับการศึกษา</label>
+                            <div class="col-sm-10">
+                                <select name="sclass" id="" class="form-control">
+                                    <option value="มัธยม">มัธยม</option>
+                                    <option value="ปริญญาตรี">ปริญญาตรี</option>
+                                    <option value="ปริญญาโท">ปริญญาโท</option>
+                                    <option value="ปริญญาเอก">ปริญญาเอก</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คณะ</label>
+                            <div class="col-sm-10">
+                                <select name="sfaculty" id="" class="form-control">
+                                    <% Object.values(l_facu).forEach(function(item){%>
+                                        <option value="<%= item%>">
+                                            <%= item%>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">สาขา</label>
+                            <div class="col-sm-10">
+                                <select name="sbranch" id="" class="form-control">
+                                    <% Object.values(l_branch).forEach(function(item){%>
+                                        <option value="<%= item%>">
+                                            <%= item%>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">เกรด</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sgpa" min="1.00" max="4.00" step="any"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ประเทศ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="country" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">มหาวิทยาลัย</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="university" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ค่าครองชีพ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="costoflive">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ค่าศึกษา</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="costoflean">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ค่าที่พักอาศัย</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="costofabode">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คะแนน TOEIC</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="stoeic">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คะแนน IELTS</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sielts">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คะแนน TOEFL</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="stoefl">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ผู้ให้ทุน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sgiver">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">url</label>
+                            <div class="col-sm-10">
+                                <input type="url" class="form-control" name="url">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">วันที่เพิ่มข้อมูล</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="scrapdate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" onclick="alertFunction()" id="demo" value="บันทึกข้อมูล"
+                                class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new MultiSelectTag('stype')
+        function myFunction() {
+            let text;
+            let newstype = prompt("ระบุประเภททุนใหม่");
+            if (newstype == null || newstype == "") {
+                text = "ไม่ได้ระบุ";
+            } else {
+                text = "เพิ่ม " + newstype + " สำเร็จ";
+            }
+            document.getElementById("newstype").innerHTML = text;
+        }
+
+        function alertFunction() {
+            var txt;
+            if (confirm("เพิ่มทุนสำเร็จ!!!")) {
+                txt = "ทุนถูกเพิ่มไปยังฐานข้อมูล!";
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+
+
+        function alertFunction2() {
+            var txt = alert('ออกจากระบบสำเร็จ');
+            document.getElementById("demo").innerHTML = txt;
+        }
+
+    </script>
+<%- include('../endsidebarmain')%>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="logo-name">
+                <div class="logo-image">
+                    <img src="/public/images/dg.png" alt="">
+                </div>
+                <span class="logo_name">Main Admin</span>
+            </div>
+    
+            <div class="menu-items">
+                <ul class="nav-links">
+                    <li><a href="/admins/dashboard">
+                            <i class="uil uil-estate"></i>
+                            <span class="link-name">DashBoard</span>
+                        </a></li>
+    
+                    <li><a href="/admins/list">
+                            <i class="uil uil-book-alt"></i>
+                            <span class="link-name">Scholarships</span>
+                        </a></li>
+    
+                    <li><a href="/admins/userlist">
+                            <i class="uil uil-user-circle"></i>
+                            <span class="link-name">Users</span>
+                        </a></li>
+    
+                    <li><a href="/admins/addcomp">
+                            <i class="uil uil-ellipsis-v"></i>
+                            <span class="link-name">Others</span>
+                        </a></li>
+                </ul>
+    
+                <ul class="logout-mode">
+                    <li><a href="/scholarships/logout">
+                            <i class="uil uil-sign-out-alt"></i>
+                            <span class="link-name" id="demo" onclick="alertFunction()">Logout</span>
+                        </a></li>
+                </ul>
+            </div>
+        </nav>
+
+    <div class="container" style="margin-right: 6%;">
+        <!-- <div style=" padding-top: 20px;">
+            <a href="http://localhost:3000/scholarships/Maindashboard#">ย้อนกลับ</a>
+        </div> -->
+        <div class="container">
+            <h2 style="text-align: center; padding-top: 25px; margin-bottom: 30px;">รายการทุนทั้งหมด</h2>
+
+            <div style="margin-bottom: 20px;">
+                <div style="text-align: end;">
+                    <a class="btn btn-danger" href="/admins/filter">ตัวกรองการค้นหา</a>
+                    <a class="btn btn-danger" href="/admins/insertdata">เพิ่มทุน</a>
+            </div>
+                <form action="/admins/gettextsearch" method="post" style="margin-top: 20px;">
+                <a class="search-box" style="padding-right: 2%;">
+                    <i class="uil uil-search"></i>
+                    <input type="text" onkeyup="sendData(this)" name="keysearch" placeholder="   search here" style="margin-left: 5px; height: 40px; width: 97%; border-radius: 10px;">
+                    <section id="searchResults"></section>
+                </a>
+                <!-- <button type="submit">ค้นหา</button> -->
+                </form>
+            </div>
+            <table class="table table-bordered" style="text-align: center;">
+                <thead>
+                    <tr style="background-color: rgb(255, 224, 111);">
+                        <th style="height: 1px; width: 250px;">ชื่อทุน</th>
+                        <th>เวลาเปิด</th>
+                        <th>เวลาปิด</th>
+                        <th style="height: 1px; width: 150px;">ระดับการศึกษา</th>
+                        <th style="height: 1px; width: 220px;">คณะ</th>
+                        <th>ลบ</th>
+                        <th>แก้ไข</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.values(scholarships).forEach(function(item){%>
+                    <tr style="background-color: rgb(254, 247, 218);">
+                        <td><a href="/admins/this/<%= item._id%>"><%= item.sname%></a></td>
+                        <td><%= item.opendate%></td>
+                        <td><%= item.closedate%></td>
+                        <td><%= item.sclass%></td>
+                        <td><%= item.sfaculty%></td>
+                        <td><a class="btn btn-danger" href="/admins/delete/<%= item._id%>" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</a></td>
+                        <td>
+                            <form action="/admins/edit" method="POST">
+                                <input type="hidden" name="edit_id" value="<%= item._id%>">
+                                <button type="submit" class="btn btn-primary">แก้ไข</button>
+                            </form>
+                        </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+    <script>
+        function sendData(e){
+            const searchResults = document.getElementById('searchResults');
+            fetch('getResult', {
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({payload: e.value})
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                searchResults.innerHTML = '';
+                if(payload.length < 1){
+                    searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                    return;
+                }
+                payload.forEach((item, index) =>{
+                    if(index > 0) { 
+                        searchResults.innerHTML += '<hr>';
+                        searchResults.innerHTML += `<p>${item.sname}</p>`;
+                    }
+                });
+                return;
+            });
+        }
+        
+        function alertFunction() {
+            var txt = alert('ออกจากระบบสำเร็จ');
+            document.getElementById("demo").innerHTML = txt;
+            }
+
+    </script>
+    </body>
+</html>
+
+

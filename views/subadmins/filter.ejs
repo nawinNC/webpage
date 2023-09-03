@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/public/images/dg.png" alt="">
+            </div>
+            <span class="logo_name">Main Admin</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/admins/dashboard">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">DashBoard</span>
+                    </a></li>
+
+                <li><a href="/admins/list">
+                        <i class="uil uil-book-alt"></i>
+                        <span class="link-name">Scholarships</span>
+                    </a></li>
+
+                <li><a href="/admins/userlist">
+                        <i class="uil uil-user-circle"></i>
+                        <span class="link-name">Users</span>
+                    </a></li>
+
+                <li><a href="/admins/addcomp">
+                        <i class="uil uil-ellipsis-v"></i>
+                        <span class="link-name">Others</span>
+                    </a></li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li><a href="/scholarships/logout">
+                        <i class="uil uil-sign-out-alt"></i>
+                        <span class="link-name" id="demo" onclick="alertFunction()">Logout</span>
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1 style="padding-top: 30px; text-align: center; position: relative;">ตัวเลือกการคัดกรอง</h1>
+    
+    <div class="container" style="margin-left: 32% ;">
+        <form class="form-horizontal" action="/admins/result" method="POST">
+            <div class="form-group">
+                <label for="" style="padding-top: 30px;">ระบุประเภททุน</label><br>
+                <select name="ft_stype" id="" class="form-control" style="width: 50%;">
+                    <option value="all">ทั้งหมด</option>
+                    <% for (i=0;i< scholarshipstype.length;i++) {%>
+                        <option value="<%= scholarshipstype[i]%>">
+                            <%= scholarshipstype[i]%>
+                        </option>
+                        <%} %>
+                </select>
+
+                <label for="" style="padding-top: 30px;">ระบุคณะ</label><br>
+                <select name="ft_facu" id="" class="form-control" style="width: 50%;">
+                    <option value="all">ทั้งหมด</option>
+                    <% for (i=0;i< scholarshipsfacu.length;i++) {%>
+                        <option value="<%= scholarshipsfacu[i]%>">
+                            <%= scholarshipsfacu[i]%>
+                        </option>
+                        <%} %>
+                </select>
+
+                <label for="" style="padding-top: 30px;">ระบุสาขา</label><br>
+                <select name="ft_branch" id="" class="form-control" style="width: 50%;">
+                    <option value="all">ทั้งหมด</option>
+                    <% for (i=0;i< scholarshipsbranch.length;i++) {%>
+                        <option value="<%= scholarshipsbranch[i]%>">
+                            <%= scholarshipsbranch[i]%>
+                        </option>
+                        <%} %>
+                </select>
+
+                <label for="" style="padding-top: 30px;">ระบุมหาวิทยาลัย</label><br>
+                <select name="ft_uni" id="" class="form-control" style="width: 50%;">
+                    <option value="all">ทั้งหมด</option>
+                    <% for (i=0;i< scholarshipsuni.length;i++) {%>
+                        <option value="<%= scholarshipsuni[i]%>">
+                            <%= scholarshipsuni[i]%>
+                        </option>
+                        <%} %>
+                </select><br>
+
+                <div>
+                    <label for="" style="padding-top: 30px;">ระบุเกรด</label>
+                    <input class="form-control" style="width: 50%;" type="number" id="gpa" min="1.00" max="4.00"
+                        step="any" value="4.00" name="ft_gpa">
+                </div>
+
+                <label for="" style="padding-top: 30px;">ระบุประเทศ</label><br>
+                <select name="ft_country" id="" class="form-control" style="width: 50%;">
+                    <option value="all">ทั้งหมด</option>
+                    <% for (i=0;i< l_country.length;i++) {%>
+                        <option value="<%= l_country[i]%>">
+                            <%= l_country[i]%>
+                        </option>
+                        <%} %>
+                </select>
+
+                <div class="form-group">
+                    <label>ระบุระดับการศึกษา</label>
+                    <select name="ft_sclass" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <option value="มัธยม">มัธยม</option>
+                        <option value="ปริญญาตรี">ปริญญาตรี</option>
+                        <option value="ปริญญาโท">ปริญญาโท</option>
+                        <option value="ปริญญาเอก">ปริญญาเอก</option>
+                    </select>
+                </div>
+
+                <label class="form-group">ขอบเขตทุนการศึกษา</label>
+
+                <div class="form-group">
+                    <label>ค่าครองชีพ</label>
+                    <select name="ft_costoflive" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< l_costoflive.length;i++) {%>
+                            <option value="<%= l_costoflive[i]%>">
+                                <%= l_costoflive[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ค่าเล่าเรียน</label>
+                    <select name="ft_costoflean" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< l_costoflean.length;i++) {%>
+                            <option value="<%= l_costoflean[i]%>">
+                                <%= l_costoflean[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ค่าที่พักอาศัย</label>
+                    <select name="ft_costofabode" id="" class="form-control" style="width: 50%;">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< l_costofabode.length;i++) {%>
+                            <option value="<%= l_costofabode[i]%>">
+                                <%= l_costofabode[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="คัดกรอง" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function alertFunction() {
+            var txt = alert('ออกจากระบบสำเร็จ');
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+</body>
+
+</html>

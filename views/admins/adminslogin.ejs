@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/stylesheets/adminlogin.css">
+	<title>AdminsLogin</title>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			<form action="/scholarships/sendDatalogin" method="POST">
+                <h1> Admin Login </h1><br><br>
+                <span style="position: relative;"><%= loginStatus%></span>
+				<input type="text" name="admin_name" autocomplete="off" required placeholder="Username" />
+				<input type="password" name="admin_password" autocomplete="off" required placeholder="Password" /><br><br>
+				<button  type="submit">Log In</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>SCHOLARSHIPS</h1><sub>SYSTEM</sub>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

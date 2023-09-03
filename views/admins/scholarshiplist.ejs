@@ -1,0 +1,82 @@
+<%- include('../sidebarmainadmin')%>
+<div class="container" style="margin-right: 6%;">
+    <div class="container">
+        <h2 style="text-align: center; padding-top: 25px; margin-bottom: 30px;">รายการทุนทั้งหมด</h2>
+
+        <div style="margin-bottom: 20px;">
+            <div style="text-align: end;">
+                <a class="btn del" href="/scholarships/filter">ตัวกรองการค้นหา</a>
+                <a class="btn add" href="/scholarships/insertdata">เพิ่มทุน</a>
+
+            </div>
+            <form action="/scholarships/gettextsearch" method="post" style="margin-top: 20px;">
+            <a class="search-box" style="padding-right: 2%;">
+                <i class="uil uil-search"></i>
+                <input type="text" onkeyup="sendData(this)" name="keysearch" placeholder="   search here" style="margin-left: 5px; height: 40px; width: 97%; border-radius: 10px;">
+                <section id="searchResults"></section>
+            </a>
+            <!-- <button type="submit">ค้นหา</button> -->
+            </form>
+        </div>
+        <table class="table table-hover table-sm table-bordered table-striped" >
+            <thead>
+                <tr>
+                    <th style="height: 1px; width: 250px;">ชื่อทุน</th>
+                    <th>เวลาเปิด</th>
+                    <th>เวลาปิด</th>
+                    <th style="height: 1px; width: 150px;">ระดับการศึกษา</th>
+                    <th style="height: 1px; width: 220px;">คณะ</th>
+                    <th>ลบ</th>
+                    <th>แก้ไข</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.values(scholarships).forEach(function(item){%>
+                <tr>
+                    <td><a href="/scholarships/this/<%= item._id%>" class="button"><%= item.sname%></a></td>
+                    <td><%= item.opendate%></td>
+                    <td><%= item.closedate%></td>
+                    <td><%= item.sclass%></td>
+                    <td><%= item.sfaculty%></td>
+                    <td><a class="btn del" href="/scholarships/delete/<%= item._id%>" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</a></td>
+                    <td>
+                        <form action="/scholarships/edit" method="POST">
+                            <input type="hidden" name="edit_id" value="<%= item._id%>">
+                            <button type="submit" class="btn edit">แก้ไข</button>
+                        </form>
+                    </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+        </table>
+    </div>
+</div>
+
+    <script>
+        function sendData(e) {
+            const searchResults = document.getElementById('searchResults');
+            fetch('getResult', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ payload: e.value })
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                searchResults.innerHTML = '';
+                if (payload.length < 1) {
+                    searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                    return;
+                }
+                payload.forEach((item, index) => {
+                    if (index > 0) {
+                        searchResults.innerHTML += '<hr>';
+                        searchResults.innerHTML += `<p>${item.sname}</p>`;
+                    }
+                });
+                return;
+            });
+        }
+        
+        
+    </script>
+<%- include('../endsidebarmain')%>

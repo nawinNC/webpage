@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <style>
+        .div1 {
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 500px;
+            height: 425px;
+            backdrop-filter: blur(10px);
+            background-color:#9335c67b;
+            border-radius: 15px;
+        }
+
+        .buttonst {
+            width: 100px;
+            height: 40px;
+            border-radius: 15px;
+            border: 1px solid #F27055;
+            background-color: #FFB34F;
+        }
+        
+        .ipct {
+            width: 300px;
+            height: 35px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-color: aliceblue">
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/public/images/dg.png" alt="">
+            </div>
+            <span class="logo_name">Main Admin</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/scholarships/Maindashboard">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">DashBoard</span>
+                </a></li>
+
+                <li><a href="/scholarships/list">
+                    <i class="uil uil-book-alt"></i>
+                    <span class="link-name">Scholarships</span>
+                </a></li>
+
+                <li><a href="/scholarships/userlist">
+                    <i class="uil uil-user-circle"></i>
+                    <span class="link-name">Users</span>
+                </a></li>
+
+                <li><a href="/scholarships/adminlist">
+                    <i class="uil uil-users-alt"></i>
+                    <span class="link-name">SubAdmins</span>
+                </a></li>
+
+                <li><a href="/scholarships/addcomp">
+                    <i class="uil uil-ellipsis-v"></i>
+                    <span class="link-name">Others</span>
+                </a></li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li><a href="/scholarships/logout">
+                    <i class="uil uil-sign-out-alt"></i>
+                    <span class="link-name" id="demo" onclick="alertFunction()">Logout</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2 style="text-align: center; padding-top: 50px; font-size: 60px;">เพิ่ม Admin</h2>
+    <div style="text-align: center; padding-top: 20px; margin-left: 1%;">
+        <div class="div1" >
+            <form action="/scholarships/insertAdmin" method="POST">
+                <h6 style="text-align: start; padding-top: 20px;  font-size: 20px;">Admin name</h6>
+                <input type="text" name="admin_name" autocomplete="off" required class="ipct" >
+                <h6 style="text-align: start; padding-top: 10px;  font-size: 20px;">Admin password</h6>
+                <input type="text" name="admin_password" autocomplete="off" required class="ipct" >
+                <h6 style="text-align: start; padding-top: 10px;  font-size: 20px;">Activate status</h6>
+                <select name="activateStatus" id="" class="ipct"  >
+                    <option value="false">ยังไม่ได้ Activate</option>
+                    <option value="true">Activate แล้ว</option>
+                </select><br><br>
+                <button type="submit" class="buttonst">เพิ่มแอดมิน</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function alertFunction() {
+            var txt = alert('ออกจากระบบสำเร็จ');
+            document.getElementById("demo").innerHTML = txt;
+            }
+    </script>
+</body>
+
+</html>

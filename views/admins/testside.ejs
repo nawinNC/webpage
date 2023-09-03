@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sidebar Menu</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/side.css">
+</head>
+<body>
+  <div class="sidebar">
+    <ul>
+      <li class="<%= activePage === 'home' ? 'active' : '' %>"><a href="/scholarships/maindashboard">Home</a></li>
+      <li class="<%= activePage === 'about' ? 'active' : '' %>"><a href="/scholarships/list">About</a></li>
+      <li class="<%= activePage === 'contact' ? 'active' : '' %>"><a href="/scholarships/adminlist">Contact</a></li>
+    </ul>
+  </div>
+  
+  <div class="content">
+    <% if (activePage === 'home') { %>
+      <h1>Welcome to the Home Page</h1>
+      <!-- Home page content goes here -->
+    <% } else if (activePage === 'about') { %>
+      <h1>About Us</h1>
+      <!-- About page content goes here -->
+    <% } else if (activePage === 'contact') { %>
+      <h1>Contact Us</h1>
+      <!-- Contact page content goes here -->
+    <% } %>
+  </div>
+</body>
+</html>

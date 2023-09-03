@@ -1,0 +1,56 @@
+<%- include('../sidebarmainadmin')%>
+<h1 style="padding-top: 25px; text-align: center;">ข้อมูล User</h1>
+<section class="areapro">
+<div class="pro">
+    <div style="text-align: center; margin-bottom: 30px;">
+    <img src="/images/user.png" class="rounded" width="150">
+    </div>
+    <label for="">
+        <h4>ชื่อ :</h4>
+        <d><%= userdata.ufname%></d>
+    </label><br>
+    <label for="">
+        <h4>นามสกุล :</h4>
+        <d><%= userdata.ulname%></d>
+    </label><br>
+    <label for="">
+        <h4>Email :</h4>
+        <d><%= userdata.uemail%></d>
+    </label><br>
+    <label for="">
+        <h4>เบอร์มือถือ :</h4>
+        <d><%= userdata.phonenumber%></d>
+    </label><br>
+</div>
+
+<div class="depro" style="padding-top: 30px;">
+    <label for="" style="padding-top: 15px;">
+        <h4>คณะ :</h4>
+        <%= userdata.ufaculty%>
+    </label>
+    <label for="" style="padding-top: 15px;">
+        <h4>สาขา :</h4>
+        <%= userdata.ubranch%>
+    </label>
+    <label for="" style="padding-top: 15px;">
+        <h4>เกรด :</h4>
+        <%= userdata.ugpa%>
+    </label>
+    <label for="" style="padding-top: 15px;">
+        <h4>ระดับการศึกษา :</h4>
+        <%= userdata.uclass%>
+    </label>
+    <label for="" style="padding-top: 15px;">
+        <h4>คะแนน TOEIC :</h4>
+        <%= userdata.utoeic%>
+    </label>
+    <label for="" style="padding-top: 15px;">
+        <h4>คะแนน EILTS :</h4>
+        <%= userdata.uielts%>
+    </label>
+    <label for="" style="padding-top: 15px;">
+        <h4>คะแนน TOEFL :</h4>
+        <%= userdata.utoefl%>
+    </label>
+</div>
+    <%- include('../endsidebarmain')%>

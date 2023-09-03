@@ -1,0 +1,61 @@
+<%- include('../sidebarmainadmin')%>
+    <!-- <div style="padding-left: 20px; padding-top: 20px;" >
+            <a href="http://localhost:3000/scholarships/Maindashboard">ย้อนกลับ</a>
+        </div> -->
+    <div class="container" style="margin-right: 6%;">
+        <h2 style="text-align: center; padding-top: 25px;">รายการ Admin</h2>
+        <div style="padding-bottom: 15px; text-align: end;">
+                <button type="submit" class="btn add" onclick="openForm()">เพิ่มแอดมิน</button>
+                <div class="form-popup" id="myForm">
+                    <form action="/scholarships/insertAdmin" method="POST" class="form-container">
+                        <h6 style="text-align: start; padding-top: 20px;  font-size: 20px;">Admin name</h6>
+                        <input type="text" name="admin_name" autocomplete="off" required class="ipct" >
+                        <h6 style="text-align: start; padding-top: 10px;  font-size: 20px;">Admin password</h6>
+                        <input type="text" name="admin_password" autocomplete="off" required class="ipct" >
+                        <h6 style="text-align: start; padding-top: 10px;  font-size: 20px;">Activate status</h6>
+                        <select name="activateStatus" id="" class="ipct"  >
+                            <option value="false">ยังไม่ได้ Activate</option>
+                            <option value="true">Activate แล้ว</option>
+                        </select><br><br>
+                        <button type="submit" class="btn">เพิ่มแอดมิน</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">ยกเลิก</button>
+                    </form>
+                  </div>
+        </div>
+        <table class="table table-hover table-sm table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Admin name</th>
+                    <th>Delete</th>
+                    <th>Activate Status</th>
+                    <th>Activate Status change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.values(admindata).forEach(function(item){%>
+                    <tr>
+                        <td>
+                            <%= item.aname%>
+                        </td>
+                        <td><a class="btn del" href="/scholarships/admindelete/<%= item._id%>"
+                                onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</a></td>
+                        <td>
+                            <%= item.account_activate_state%>
+                        </td>
+                        <td><a class="btn edit" href="/scholarships/activateStateChange/<%= item._id%>"
+                                onclick="return confirm('คุณต้องการเปลี่ยนข้อมูลหรือไม่ ?')">เปลี่ยน</a></td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+    <%- include('../endsidebarmain')%>

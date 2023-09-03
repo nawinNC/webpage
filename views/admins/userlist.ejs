@@ -1,0 +1,36 @@
+<%- include('../sidebarmainadmin')%>
+    <div class="container" style="margin-right: 5%;">
+        <!-- <div style="padding-left: 20px; padding-top: 20px;" >
+            <a href="http://localhost:3000/scholarships/Maindashboard#">ย้อนกลับ</a>
+        </div> -->
+        <div class="container">
+            <h2 style="text-align: center; padding-top: 25px; margin-bottom: 30px;">รายการ  User</h2>
+            <table class="table table-hover table-sm table-bordered table-striped">
+                <thead>
+                    <tr >
+                        <th>Email</th>   
+                        <th style="width: 180px;">ชื่อ</th>
+                        <th style="width: 180px;">นามสกุล</th>             
+                        <th>คณะ</th>
+                        <th>สาขา</th>
+                        <th>ลบ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Object.values(userdata).forEach(function(item){%>
+                    <tr>
+                        <td><a href="/scholarships/thisuser/<%= item._id%>"><%= item.uemail%></a></td>
+                        <td><%= item.ufname%></td>
+                        <td><%= item.ulname%></td>
+                        <td><%= item.ufaculty%></td>
+                        <td><%= item.ubranch%></td>
+                        <td><a class="btn del" href="/scholarships/users/delete/<%= item._id%>" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</a></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    <%- include('../endsidebarmain')%>
+
+

@@ -1,0 +1,76 @@
+<%- include('../sidebarmainadmin')%>
+    <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <h1 class="text" style="font-size: 56px;">Dashboard</h1>
+            </div>
+
+            <section class="info-boxes">
+                <a href="/scholarships/list" class="info-box box1" style=" text-decoration: underline transparent">
+                    <div class="box-icon">
+                        <i class="uil uil-airplay" style="font-size: 40px;"></i>
+                    </div>
+                    <div class="box-content">
+                        <span class="big">
+                            <%= scholarshipsAmount %>
+                        </span>
+                        Scholarships
+                    </div>
+                </a>
+
+                <a href="#" class="info-box box2" style=" text-decoration: underline transparent">
+                    <div class="box-icon">
+                        <i class="uil uil-code-branch" style="font-size: 40px; "></i>
+                    </div>
+
+                    <div class="box-content">
+                        <span class="big">
+                            <%= branchAmonut %>
+                        </span>
+                        branchAmonut
+                    </div>
+                </a>
+
+                <a href="#" class="info-box box3" style=" text-decoration: underline transparent">
+                    <div class="box-icon">
+                        <i class="uil uil-user-arrows" style="font-size: 40px; "></i>
+                    </div>
+
+                    <div class="box-content">
+                        <span class="big">
+                            <%= facultyAmount %>
+                        </span>
+                        Faculty
+                    </div>
+                </a>
+
+                <a href="/scholarships/userlist" class="info-box box4" style=" text-decoration: underline transparent">
+                    <div class="box-icon">
+                        <i class="uil uil-user-circle" style="font-size: 40px; "></i>
+                    </div>
+
+                    <div class="box-content">
+                        <span class="big">
+                            <%= usersAmount %>
+                        </span>
+                        Users
+                    </div>
+                </a>
+
+                <a href="/scholarships/adminlist" class="info-box box5" style=" text-decoration: underline transparent">
+                    <div class="box-icon">
+                        <i class="uil uil-user" style="font-size: 40px; "></i>
+                    </div>
+
+                    <div class="box-content">
+                        <span class="big">
+                            <%= adminAmount %>
+                        </span>
+                        Admin
+                    </div>
+                </a>
+            </section>
+        </div>
+    </div>
+    </div>
+    <%- include('../endsidebarmain')%>

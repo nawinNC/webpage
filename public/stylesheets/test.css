@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* -----แถบเมนู------ */
+.nav{
+    height: 80px;
+    display: flex;
+    border: 1px solid red;
+    background-color: #465dee;
+    color: #fff;
+}
+
+.logo{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    /* border: 1px solid red; */
+}
+
+/* -----แถบ sidebar----- */
+.sidebar{
+    height:100%;
+    width: 250px;
+    position: fixed;
+    overflow-x: hidden;
+    z-index: 1;
+    top: 1;
+    left: 0;
+    background-color: #465dee;
+
+}
+
+
+ul {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    list-style: none;
+    text-align: left;
+}
+ul li {
+    margin: 0 1rem;
+    
+}
+ul li a{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    text-decoration: none;
+    position: relative;
+    color: #fff;
+    
+}
+ul li a:hover{
+    color: #525252;
+    cursor: pointer;
+}
+
+
+/* -----ส่วนหัว----- */
+header{
+    height: 150px;
+    border: 1px solid red;
+    position: fixed;
+    top: 2;
+    left: 0;
+}
+
+.search-box {
+    display: flex;
+    width: 100%;
+    border: 1px solid red;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box form input {
+    width: 700px;
+    max-height: 30px;
+    min-width: auto;
+    min-height: auto;
+    
+    border: 1px solid red;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+}

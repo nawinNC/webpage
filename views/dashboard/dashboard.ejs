@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="/public/images/dg.png" alt="">
+            </div>
+            <span class="logo_name">Admin</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="/admins/dashboard">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">DashBoard</span>
+                </a></li>
+
+                <li><a href="/admins/list">
+                    <i class="uil uil-book-alt"></i>
+                    <span class="link-name">Scholarships</span>
+                </a></li>
+
+                <li><a href="/admins/userlist">
+                    <i class="uil uil-users-alt"></i>
+                    <span class="link-name">Users</span>
+                </a></li>
+
+
+                <li><a href="/admins/addcomp">
+                    <i class="uil uil-ellipsis-v"></i>
+                    <span class="link-name">Others</span>
+                </a></li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li><a href="/scholarships/login">
+                    <i class="uil uil-sign-out-alt"></i>
+                    <span class="link-name" id="demo" onclick="alertFunction()">Logout</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+    
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-airplay"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+
+                <div class="boxes">
+                    <a href="/admins/list" style=" text-decoration: underline transparent" class="box box1">
+                    <button type="button" class="box box1" style=" border: 0px;">
+                        <i class="uil uil-airplay" style="font-size: 40px;" ></i>
+                        <span class="text"style="font-size: 20px; " >Scholarships</span>
+                        <span class="number" ><%= scholarshipsAmount %></span> 
+                    </button></a>
+
+                    <a href="/admins/userlist" style=" text-decoration: underline transparent" class="box box2">
+                        <button type="button" class="box box2" style=" border: 2px;">
+                        <i class="uil uil-users-alt" style="font-size: 40px; "></i>
+                        <span class="text" style="font-size: 20px;" >Users</span>
+                        <span class="number" ><%= usersAmount %></span> 
+                        </button>
+                    </a>
+
+                    <a href="#" style=" text-decoration: underline transparent" class="box box3">
+                        <button type="button" class="box box3" style=" border: 2px;">
+                        <i class="uil uil-users-alt" style="font-size: 40px; "></i>
+                        <span class="text" style="font-size: 20px; " >Faculty</span>
+                        <span class="number" ><%= facultyAmount %></span> 
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-content2"> 
+                <div class="boxes2">
+                    <a href="#" style=" text-decoration: underline transparent" class="boxes2 box1">
+                        <button type="button" class="boxes2 box1" style=" border: 2px;">
+                        <i class="uil uil-airplay" style="font-size: 40px; "></i>
+                        <span class="text" style="font-size: 20px; ">branchAmonut</span>
+                        <span class="number" ><%= branchAmonut %></span> 
+                        </button>
+                    </a>
+
+                    <a href="#" style=" text-decoration: underline transparent" class="boxes2 box2">
+                        <button type="button" class="boxes2 box2" style=" border: 2px;">
+                        <i class="uil uil-users-alt" style="font-size: 40px; "></i>
+                        <span class="text" style="font-size: 20px; ">UserAmount</span>
+                        <span class="number" ><%= usersAmount %></span> 
+                        </button>
+                    </a>
+
+                    <a href="#" style=" text-decoration: underline transparent" class="boxes2 box3">
+                        <button type="button" class="boxes2 box3" style=" border: 2px;">
+                        <i class="uil uil-users-alt" style="font-size: 40px; "></i>
+                        <span class="text" style="font-size: 20px; ">Faculty</span>
+                        <span class="number" ><%= facultyAmount %></span> 
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function alertFunction() {
+            var txt = alert('ออกจากระบบสำเร็จ');
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+
+</body>
+</html>

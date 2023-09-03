@@ -1,0 +1,140 @@
+<%- include('../navthementop')%>
+    <div class="areaspace">
+        <h1 style="font-size: 62px; color: #000; display: flex; text-align: center; justify-content: center;">
+            ตัวเลือกการคัดกรอง</h1>
+        <div class="container">
+            <form action="/users/result" method="POST">
+                <div class="fillterarea">
+                    <div class="text-menu">
+                        <label for="">ระบุประเภททุน</label>
+                    </div>
+                    <select name="ft_stype" id="" class="form-control">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipstype.length;i++) {%>
+                            <option value="<%= scholarshipstype[i]%>">
+                                <%= scholarshipstype[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+                    <div class="text-menu">
+                        <label for="">ระบุคณะ</label>
+                    </div>
+                    <select name="ft_facu" id="" class="form-control">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipsfacu.length;i++) {%>
+                            <option value="<%= scholarshipsfacu[i]%>">
+                                <%= scholarshipsfacu[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+
+                    <div class="text-menu">
+                        <label for="">ระบุสาขา</label>
+                    </div>
+                    <select name="ft_branch" id="" class="form-control">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipsbranch.length;i++) {%>
+                            <option value="<%= scholarshipsbranch[i]%>">
+                                <%= scholarshipsbranch[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+
+                    <div class="text-menu">
+                        <label for="">ระบุมหาวิทยาลัย</label>
+                    </div>
+                    <select name="ft_uni" id="" class="form-control">
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< scholarshipsuni.length;i++) {%>
+                            <option value="<%= scholarshipsuni[i]%>">
+                                <%= scholarshipsuni[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+
+                    <div>
+                        <div class="text-menu">
+                            <label for="">ระบุเกรด</label>
+                        </div>
+                        <input class="form-control" type="number" id="gpa" min="1.00" max="4.00" step="any" value="4.00"
+                            name="ft_gpa">
+                    </div>
+                    <div>
+                        <div class="text-menu">
+                            <label for="">ระบุประเทศ</label>
+                        </div>
+                    </div>
+                    <select name="ft_country" id="" class="form-control" \>
+                        <option value="all">ทั้งหมด</option>
+                        <% for (i=0;i< l_country.length;i++) {%>
+                            <option value="<%= l_country[i]%>">
+                                <%= l_country[i]%>
+                            </option>
+                            <%} %>
+                    </select>
+
+                    <div>
+                        <div class="text-menu">
+                            <label>ระบุระดับการศึกษา</label>
+                        </div>
+                        <select name="ft_sclass" id="" class="form-control">
+                            <option value="all">ทั้งหมด</option>
+                            <option value="มัธยม">มัธยม</option>
+                            <option value="ปริญญาตรี">ปริญญาตรี</option>
+                            <option value="ปริญญาโท">ปริญญาโท</option>
+                            <option value="ปริญญาเอก">ปริญญาเอก</option>
+                        </select>
+                    </div>
+
+                    <label>ขอบเขตทุนการศึกษา</label>
+
+                    <div>
+                        <div class="text-menu">
+                            <label>ค่าครองชีพ</label>
+                        </div>
+                        <select name="ft_costoflive" id="" class="form-control">
+                            <option value="all">ทั้งหมด</option>
+                            <% for (i=0;i< l_costoflive.length;i++) {%>
+                                <option value="<%= l_costoflive[i]%>">
+                                    <%= l_costoflive[i]%>
+                                </option>
+                                <%} %>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="text-menu">
+                            <label>ค่าเล่าเรียน</label>
+                        </div>
+                        <select name="ft_costoflean" id="" class="form-control">
+                            <option value="all">ทั้งหมด</option>
+                            <% for (i=0;i< l_costoflean.length;i++) {%>
+                                <option value="<%= l_costoflean[i]%>">
+                                    <%= l_costoflean[i]%>
+                                </option>
+                                <%} %>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="text-menu">
+                            <label>ค่าที่พักอาศัย</label>
+                        </div>
+                        <select name="ft_costofabode" id="" class="form-control">
+                            <option value="all">ทั้งหมด</option>
+                            <% for (i=0;i< l_costofabode.length;i++) {%>
+                                <option value="<%= l_costofabode[i]%>">
+                                    <%= l_costofabode[i]%>
+                                </option>
+                                <%} %>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="submit" value="คัดกรอง" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <%- include('../navthemeend')%>

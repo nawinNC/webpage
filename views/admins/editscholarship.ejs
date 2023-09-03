@@ -1,0 +1,147 @@
+<%- include('../sidebarmainadmin')%>
+    <h1 style="padding-top: 25px; text-align: center;">แก้ไขข้อมูล</h1>
+    <div class="container" style="margin-left: 25%;">
+        <div class="row my-3">
+            <div class="col-md-8 mb-4">
+                <form class="form-horizontal" method="POST" action="/scholarships/update">
+                    <input type="hidden" value="<%= scholarships._id%>" name="update_id">
+                    <div class="form-group">
+                        <label class="control-label">ชื่อทุน</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="sname" value="<%= scholarships.sname%>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">ประเภททุน</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stype" value="<%= scholarships.stype%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">วันที่เปิดรับ</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="opendate"
+                                    value="<%= scholarships.opendate%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">วันที่ปิดรับ</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="closedate"
+                                    value="<%= scholarships.closedate%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คณะ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sfaculty"
+                                    value="<%= scholarships.sfaculty%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">สาขา</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sbranch"
+                                    value="<%= scholarships.sbranch%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ระดับการศึกษา</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sclass" value="<%= scholarships.sclass%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">เกรด</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="sgpa" min="1.00" max="4.00" step="any"
+                                    value="<%= scholarships.sgpa%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ประเทศ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="country"
+                                    value="<%= scholarships.country%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">มหาวิทยาลัย</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="university"
+                                    value="<%= scholarships.university%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ค่าครองชีพ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="costoflive"
+                                    value="<%= scholarships.costoflive%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ค่าศึกษา</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="costoflean"
+                                    value="<%= scholarships.costoflean%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ค่าที่พักอาศัย</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="costofabode"
+                                    value="<%= scholarships.costofabode%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คะแนน TOEIC</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="stoeic" value="<%= scholarships.stoeic%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คะแนน IELTS</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sielts" value="<%= scholarships.sielts%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">คะแนน TOEFL</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="stoefl" value="<%= scholarships.stoefl%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">ผู้ให้ทุน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="sgiver" value="<%= scholarships.sgiver%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">url</label>
+                            <div class="col-sm-10">
+                                <input type="url" class="form-control" name="url" value="<%= scholarships.url%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">วันที่เพิ่มข้อมูล</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="scrapdate"
+                                    value="<%= scholarships.scrapdate%>">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn edit">
+                                    <a onclick="alertFunctione()" id="demo" type="submit" style="background-color: transparent;" >แก้ไขข้อมูล</a>
+                            </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function alertFunctione() {
+            var txt = alert('แก้ไขข้อมูลสำเร็จ');
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>
+    <%- include('../endsidebarmain')%>

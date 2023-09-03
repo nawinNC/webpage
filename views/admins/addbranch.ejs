@@ -1,0 +1,110 @@
+<%- include('../sidebarmainadmin')%>   
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/popupitem.css">
+    <h1 style="text-align: center;">จัดการสาขา</h1>
+    <button class="fixebtn" id="myButton">เพิ่มสาขา</button>
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <form action="/scholarships/addcompbranch" method="POST">
+                <h4 style="">เพิ่มสาขา</h4>
+                <input hidden value="<%= query%>" name="faculty" type="text">
+                <p>คณะ
+                    <%= query%>
+                </p>
+                <div style="padding-bottom: 10px;">
+                    <input placeholder="  เพิ่มสาขาใหม่ที่นี่" class="textinline" type="text" name="branch" id="" autocomplete="off" required>
+                </div>
+                <button class="btnpopup" type="submit">เพิ่ม</button>
+            </form>
+            <div style="padding-top: 8px;">
+                <button class="blackbtnpopup" id="closePopup">ย้อนกลับ</button>
+            </div>
+        </div>
+    </div>
+    <!-- แก้ใข -->
+
+    <div class="bordcontent" style="margin-top: 10px;">
+        <table id="table" class="table table-hover table-sm table-bordered table-striped">
+            <thead class="thead-light">
+                <tr id="tableTH">
+                    <th style="heigh: 50px;">
+                        <select onchange="window.location.href=this.value;" name="faculty" id="selector">
+                            <option id="infpage" hidden ><%=query%></option>
+                            <% Object.values(listfaculty).forEach(function(item){%>
+                                <option  value="/scholarships/mngbranch?faculty=<%= item%>"><a href="/scholarships/mngtype"><%= item%></a></option>
+                            <% }) %>
+                        </select> สาขา
+                    </th>
+                    <th>ลบ</th>
+                    <th>แก้ไข</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.values(listbranch).forEach(function(item){%>
+                    <tr style="overflow-y: scoll;">
+                        <form action="/scholarships/branchdelete" method="POST">
+                            <td id="stype">
+                                <%= item%>
+                                    <input hidden type="text" value="<%= item%>" name="branch">
+                                    <input hidden type="text" value="<%= query%>" name="faculty">
+                            </td>
+                            <td>
+                                <button class="deletebtnpopup" type="submit" value="<%= item%>" name="nametype" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ?')">ลบ</button>
+                            </td>
+                        </form>
+                        <td>
+                            <button value="<%= item%>" class="editbtnpopup" onclick="openForm(this.value)">แก้ไข</button>
+                            <div id="myForm" class="popup">
+                                <div class="popup-content">
+                                    <form action="/scholarships/edidbranch" method="post">
+                                        <input name="faculty" id="faculty" type="text" hidden>
+                                        <input name="beforedit" id="defau" type="text" hidden>
+                                        <h4 style="padding-bottom: 20px;">แก้ใขประเภททุน</h4>
+                                        <input id="showedit" class="textinline" type="text" name="editbranch" autocomplete="off">
+                                        <button class="btnpopup" type="submit">แก้ใข</button>
+                                    </form>
+                                    <div style="padding-top: 8px;">
+                                        <button class="blackbtnpopup" onclick="closeForm(this.value)">ย้อนกลับ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script>
+        function fff() {
+        }
+
+        myButton.addEventListener("click", function() {
+            myPopup.classList.add("show");
+        });
+        closePopup.addEventListener("click", function() {
+            myPopup.classList.remove("show");
+        });
+        window.addEventListener("click", function(event) {
+            if (event.target == '') {
+                myPopup.classList.remove("show");
+            }
+        });
+
+
+        function openForm(stype) {
+            document.getElementById("myForm").style.display = "block";
+            var inline = document.getElementById("showedit");
+            inline.value = stype;
+            var defau = document.getElementById("defau");
+            defau.value = stype;
+            var faculty = document.getElementById("infpage").value;
+            document.getElementById("faculty").value = faculty;
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+<%- include('../endsidebarmain')%>
